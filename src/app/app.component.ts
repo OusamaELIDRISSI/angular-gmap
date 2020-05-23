@@ -16,10 +16,18 @@ export class AppComponent implements OnInit {
   constructor(private map: MapsService) {}
 
   ngOnInit(): void {
-    this.map.getLocation().subscribe((data) => {
-      console.log(data);
-      this.latitude = data.latitude;
-      this.longitude = data.longitude;
-    });
+    // this.map.getLocation().subscribe((data) => {
+    //   console.log(data);
+    //   this.latitude = data.latitude;
+    //   this.longitude = data.longitude;
+    // });
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position);
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+      });
+    }
   }
+
 }

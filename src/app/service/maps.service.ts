@@ -12,4 +12,8 @@ export class MapsService {
   getLocation(){
     return this.http.get<Location>('https://ipapi.co/json/');
   }
+
+  getUserLocation(){
+    return this.http.get<Location>('https://ipapi.co/json/');
+  }
 }
